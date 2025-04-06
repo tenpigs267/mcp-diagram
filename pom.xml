@@ -30,12 +30,19 @@
         <java.version>21</java.version>
         <spring-ai.version>1.0.0-M6</spring-ai.version>
     </properties>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-mcp-server-webmvc-spring-boot-starter -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-mcp-server-webmvc-spring-boot-starter</artifactId>
             <version>${spring-ai.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.spinget</groupId>
+            <artifactId>diagrams</artifactId>
+            <version>1.0.2</version>
         </dependency>
 
         <dependency>
@@ -84,6 +91,11 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
+        </repository>
+        <repository>
+            <id>github</id>
+            <name>GitHub spinget Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/tenpigs267/Diagrams</url>
         </repository>
     </repositories>
 </project>
