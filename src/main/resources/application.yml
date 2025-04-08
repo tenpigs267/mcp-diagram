@@ -1,3 +1,11 @@
 spring:
   application:
     name: mcp-diagram
+  main:
+    banner-mode: off
+  ai:
+    mcp:
+      server:
+        name: mcp-diagram
+        resource-change-notification: false
+        prompt-change-notification: false
