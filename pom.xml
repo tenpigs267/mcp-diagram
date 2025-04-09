@@ -10,7 +10,7 @@
     </parent>
     <groupId>fr.spinget</groupId>
     <artifactId>mcp-diagram</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>mcp-diagram</name>
     <description>Diagramming MCP server</description>
     <url/>

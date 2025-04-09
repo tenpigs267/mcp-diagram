@@ -56,21 +56,22 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Récupère tout l'historique, pas juste un clone superficiel
+          ref: main  # Spécifie explicitement la branche main
       - uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-
       - name: Set up Git user
         run: |
           git config --global user.name "spinget Builder"
           git config --global user.email "sylvestre@pinget.fr"
-
       - name: commit version increment
         run: |
           mvn release:update-versions --batch-mode
           git add pom.xml
           git commit -m "Update versions in pom.xml after release"
-          git push origin main
+          git push origin HEAD:main
         env:
           GITHUB_TOKEN: ${{ github.token }}
