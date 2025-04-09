@@ -1,0 +1,60 @@
+name: Build and release the binaries
+on:
+  release:
+    types: [ published ]
+jobs:
+  build-jar:
+    name: 'Build JAR package'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+      - name: Set up Git user
+        run: |
+          git config --global user.name "spinget Builder"
+          git config --global user.email "sylvestre@pinget.fr"
+      - name: Build with Maven
+        run: |
+          mvn --batch-mode clean versions:set -DremoveSnapshot
+          mvn --batch-mode package
+      - name: Temporarily save package
+        uses: actions/upload-artifact@v4
+        with:
+          name: java-binary
+          path: |
+            ${{ github.workspace }}/target/*.jar
+            !${{ github.workspace }}/target/original-*.jar
+          retention-days: 1
+      - name: commit version increment
+        run: |
+          mvn release:update-versions --batch-mode
+          git add pom.xml
+          git commit -m "Update versions in pom.xml after release"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+  publish-binaries:
+    name: 'Publish binaries to GitHub packages'
+    needs: [ build-jar ]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download binary
+        uses: actions/download-artifact@v4
+        with:
+          name: java-binary
+      - name: Upload binary to the GitHub release page
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: mpc-diagram.jar
+          file_glob: true
+          tag: ${{ github.ref }}
+          overwrite: true

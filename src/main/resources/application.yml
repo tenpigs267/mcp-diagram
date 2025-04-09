@@ -2,10 +2,13 @@ spring:
   application:
     name: mcp-diagram
   main:
-    banner-mode: off
+    banner-mode: off  #tout ce qui est envoyé sur la console part chez le MCP client en mode stdio donc on réduit
   ai:
     mcp:
       server:
         name: mcp-diagram
         resource-change-notification: false
         prompt-change-notification: false
+logging:
+  level:
+    root: warn  #tout ce qui est envoyé sur la console part chez le MCP client en mode stdio donc on réduit
