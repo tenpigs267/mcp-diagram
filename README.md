@@ -97,6 +97,7 @@ Le résultat sera un lien vers le diagramme généré que vous pourrez visualise
 ### Le serveur MCP ne démarre pas
 - Vérifiez que Java version 17 ou plus est correctement installé (`java -version`)
 - Assurez-vous que le chemin vers le fichier JAR est correct dans votre configuration
+- Assurez-vous que le fichier JAR téléchargé ait bien l'autorisation de s'exécuter (dans les "propriétés" du fichier JAR)
 
 ### Les diagrammes ne s'affichent pas
 - Vérifiez que votre navigateur peut accéder à Internet
