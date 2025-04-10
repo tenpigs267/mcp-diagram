@@ -36,14 +36,14 @@ Ajoutez le serveur à votre fichier `claude_desktop_config.json` :
             "command": "java",
             "args": [
                 "-jar",
-                "CHEMIN/VERS/mcp-diagram.jar"
+                "CHEMIN/VERS/mcp-diagram-X.Y.Z.jar"
             ]
         }
     }
 }
 ```
 
-> ⚠️ **Important** : Remplacez `CHEMIN/VERS/mcp-diagram.jar` par le chemin complet où vous avez téléchargé le fichier JAR. ("C:\\CHEMIN\\VERS\\mcp-diagram.jar" sous Windows)
+> ⚠️ **Important** : Remplacez `CHEMIN/VERS/mcp-diagram-X.Y.Z.jar` par le chemin complet où vous avez téléchargé le fichier JAR. ("C:\\CHEMIN\\VERS\\mcp-diagram-1.0.0.jar" sous Windows)
 
 ## 🔧 Utilisation
 
